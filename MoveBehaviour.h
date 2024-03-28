@@ -3,7 +3,6 @@
 
 class MoveBehaviour{
   public:
-    MoveBehaviour();
     virtual void move(int,int,int&,int&) =0;
 };
 

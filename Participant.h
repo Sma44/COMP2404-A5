@@ -2,8 +2,7 @@
 #define PARTICIPANT_H
 
 
-#include "defs.h"
-class MoveBehaviour;
+#include "MoveBehaviour.h"
 
 class Participant{
   public:

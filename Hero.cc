@@ -23,3 +23,6 @@ void Hero::incurDamage(Participant* p){
   }
 
 }
+
+int Hero::causeDamage(){ return 0; }
+bool Hero::isSafe() { return (row == 0); }

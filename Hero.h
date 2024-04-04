@@ -3,7 +3,6 @@
 
 #include "Participant.h"
 
-//A hero’s initial behaviour is escapee behaviour.
 class Hero : public Participant {
   public:
   Hero(char='H', int=0, int=0,std::string="N/A");

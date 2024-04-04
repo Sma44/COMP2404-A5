@@ -2,10 +2,12 @@
 #define HERO_H
 
 #include "Participant.h"
+#include "EscapeeBehaviour.h"
+#include "RescuedBehaviour.h"
 
 class Hero : public Participant {
   public:
-  Hero(char='H', int=0, int=0,std::string="N/A");
+  Hero(char='H', int=MAX_ROW, int=MAX_COL, std::string="N/A");
   virtual void incurDamage(Participant*);
   virtual int causeDamage();
   bool isSafe();

@@ -1,7 +1,6 @@
 #ifndef PARTICIPANT_H
 #define PARTICIPANT_H
 
-
 #include "MoveBehaviour.h"
 
 class Participant{

@@ -2,8 +2,6 @@
 #define HERO_H
 
 #include "Participant.h"
-#include "EscapeeBehaviour.h"
-#include "RescuedBehaviour.h"
 
 class Hero : public Participant {
   public:

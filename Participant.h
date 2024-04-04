@@ -1,7 +1,9 @@
 #ifndef PARTICIPANT_H
 #define PARTICIPANT_H
 
-#include "MoveBehaviour.h"
+
+#include "defs.h"
+class MoveBehaviour;
 
 class Participant{
   public:

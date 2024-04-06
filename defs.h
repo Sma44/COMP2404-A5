@@ -18,6 +18,8 @@ using namespace std;
 #define NINJA_SPAWN   33
 
 #define RESCUE        -1
+#define HERO           0
+#define GIANT_DMG      6
 
 // vertical movement
 #define NOMOVE         0

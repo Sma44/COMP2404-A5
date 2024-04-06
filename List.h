@@ -13,7 +13,7 @@ class List {
     List();
     ~List();
     T operator+=(T);
-    void convertToArray(T, int&);
+    void convertToArray(T*, int&);
 
   private:
     Node* head;
@@ -58,7 +58,7 @@ T List<T>::operator+=(T data){
 }
 
 template<class T>
-void List<T>::convertToArray(T arr, int& size){
+void List<T>::convertToArray(T* arr, int& size){
   Node* currNode;
   size = 0;
 

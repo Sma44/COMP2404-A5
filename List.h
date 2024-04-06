@@ -5,15 +5,15 @@ template<class T>
 class List {
   class Node {
     public:
-      T*    data;
+      T    data;
       Node* next;
   };
 
   public:
     List();
     ~List();
-    T* operator+=(T*);
-    void convertToArray(T*, int&);
+    T operator+=(T);
+    void convertToArray(T, int&);
 
   private:
     Node* head;
@@ -37,7 +37,7 @@ List<T>::~List()
 }
 
 template<class T>
-T* List<T>::operator+=(T* data){
+T List<T>::operator+=(T data){
   Node* newNode = new Node();
   newNode->data = data; 
   newNode->next = nullptr;
@@ -58,7 +58,7 @@ T* List<T>::operator+=(T* data){
 }
 
 template<class T>
-void List<T>::convertToArray(T* arr, int& size){
+void List<T>::convertToArray(T arr, int& size){
   Node* currNode;
   size = 0;
 

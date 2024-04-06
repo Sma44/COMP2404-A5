@@ -16,12 +16,15 @@ using namespace std;
 #define MAX_SNORCS    12
 #define SNORC_SPAWN   90
 #define NINJA_SPAWN   33
+#define NO_NINJA      67
+#define SNORC_SPAWN   90
+#define NO_SNORC      10
 
 #define RESCUE        -1
 #define HERO           0
 #define GIANT_DMG      6
 #define LEFT_BOUND     7
-#define MAX_HEIGHT    14
+#define MAX_HEIGHT    14 // spawn no higher than this
 #define MIN_STRENGTH   2
 
 // vertical movement

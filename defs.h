@@ -20,6 +20,7 @@ using namespace std;
 #define RESCUE        -1
 #define HERO           0
 #define GIANT_DMG      6
+#define LEFT_BOUND     7
 
 // vertical movement
 #define NOMOVE         0

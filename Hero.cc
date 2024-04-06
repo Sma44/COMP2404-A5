@@ -6,7 +6,7 @@ Hero::Hero(char ava, int row, int col, std::string name)
 void Hero::incurDamage(Participant* p){
   int damage = p->causeDamage();
 
-  if (damage = RESCUE){
+  if (damage == RESCUE){
     rescued = true;
     p->setBehavior(new RescuedBehaviour());
     return;

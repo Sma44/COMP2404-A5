@@ -9,6 +9,9 @@ class Hero : public Participant {
   virtual void incurDamage(Participant*);
   virtual int causeDamage();
   bool isSafe();
+  std::string getName();
+  int getHealth();
+  bool isRescued();
 
   private:
     std::string name;

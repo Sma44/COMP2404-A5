@@ -16,4 +16,8 @@ char Participant::getAvatar() { return avatar; }
 int Participant::getRow() { return row; }
 int Participant::getCol() { return col; }
 bool Participant::isDead() { return dead; }
-void Participant::setBehavior(MoveBehaviour* b) { behaviour = b; }
+
+void Participant::setBehavior(MoveBehaviour* b) { 
+  delete behaviour;
+  behaviour = b; 
+}

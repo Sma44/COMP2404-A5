@@ -1,30 +1,6 @@
 #include "Escape.h"
 
 Escape::Escape(){
-
-  const char pitTemplate[MAX_ROW][MAX_COL+1]={
-      "                         ",
-      "                         ",
-      "                         ",
-      "                         ",
-      "                         ",
-      "                         ",
-      "                         ",
-      "                         ",
-      "                         ",
-      "                         ",
-      "                         ",
-      "                         ",
-      "                         ",
-      "                         ",
-      "                         ",
-      "                         ",
-      "                         ",
-      "                         ",
-      "                         ",
-      "                         "
-  };
-
   srand( (unsigned)time( NULL ) );
   numSnorcs = 0;
 
@@ -34,31 +10,35 @@ Escape::Escape(){
     col2 = random(10) + LEFT_BOUND;
   }
 
-  h1 = new Hero('T', MAX_ROW-2, col1, "Timmy");
-  h2 = new Hero('H', MAX_ROW-2, col2, "Harold");
+  h1 = new Hero('T', MAX_ROW-1, col1, "Timmy");
+  h2 = new Hero('H', MAX_ROW-1, col2, "Harold");
 
   arr += h1;
   arr += h2;
 }
 
 void Escape::runEscape(){
+  bool flag = false;
+  int spawn;
+  while(!flag){
+    usleep(200000);
+    spawn = random(SNORC_SPAWN + NO_SNORC);
+    if(spawn < SNORC_SPAWN){
+      spawnSnorc();
+    }
 
-  // bool flag = false;
-  // int spawn;
-  // while(!flag){
-  //   usleep(200000);
-  //   spawn = random(SNORC_SPAWN + NO_SPAWN);
-  //   if(spawn < SNORC_SPAWN){
-  //     spawnSnorc();
-  //   }
+    spawn = random(NINJA_SPAWN + NO_NINJA);
+    if(spawn < NINJA_SPAWN){
+      spawnNinja();
+    }
 
-  //   moveParticipants();
-  //   flag = isOver();
+    moveParticipants();
+    flag = isOver();
 
-  //   system("clear");
-  //   pit->print(&arr, h1, h2);
-  // }
-  // printOutcome();
+    system("clear");
+    printPit();
+  }
+  printOutcome();
 
 }
 
@@ -83,7 +63,9 @@ void Escape::spawnSnorc(){
 }
 
 void Escape::spawnNinja(){
-
+  int col = random(MAX_COL);
+  int row = 0;
+  arr+=(new Ninja(row,col));
 }
 
 Participant* Escape::checkForCollision(Participant* p){
@@ -95,6 +77,29 @@ void Escape::moveParticipants(){
 }
 
 void Escape::printPit(){
+  char pitTemplate[MAX_ROW][MAX_COL+1]={
+      "                         ",
+      "                         ",
+      "                         ",
+      "                         ",
+      "                         ",
+      "                         ",
+      "                         ",
+      "                         ",
+      "                         ",
+      "                         ",
+      "                         ",
+      "                         ",
+      "                         ",
+      "                         ",
+      "                         ",
+      "                         ",
+      "                         ",
+      "                         ",
+      "                         ",
+      "                         "
+  };
+
 
 }
 

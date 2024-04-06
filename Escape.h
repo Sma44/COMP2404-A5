@@ -3,6 +3,7 @@
 
 #include "Hero.h"
 #include "Snorc.h"
+#include "Ninja.h"
 #include "List.h"
 
 class Escape{

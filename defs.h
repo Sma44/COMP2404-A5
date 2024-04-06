@@ -19,6 +19,17 @@ using namespace std;
 
 #define RESCUE        -1
 
+// vertical movement
+#define NOMOVE         0
+#define ONEUP          1
+#define TWOUP          2
+#define ONEDOWN        3
+#define TWODOWN        4
+#define UP             0
+
+// horizontal movement
+#define LEFT           1
+#define RIGHT          2
 
 int random(int);
 

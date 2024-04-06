@@ -2,6 +2,7 @@
 #define ESCAPE_H
 
 #include "Hero.h"
+#include "Snorc.h"
 #include "List.h"
 
 class Escape{

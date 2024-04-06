@@ -6,7 +6,7 @@
 class Snorc : public Participant{
   public:
     Snorc(int=MAX_ROW, int=MAX_COL, int=2);
-    void incurDamage();
+    void incurDamage(Participant*);
     int causeDamage();
     bool isSafe();
 

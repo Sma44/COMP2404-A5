@@ -1,7 +1,7 @@
 #include "Participant.h"
 
 Participant::Participant(char ava, int r, int c, MoveBehaviour* b) 
-: avatar(ava), row(r), col(c), dead(false), behaviour(b) {}
+: avatar(ava), row(r), col(c), behaviour(b), dead(false) {}
 
 Participant::~Participant() { delete behaviour; } 
 
@@ -22,6 +22,7 @@ int Participant::getRow() { return row; }
 int Participant::getCol() { return col; }
 bool Participant::isDead() { return dead; }
 
+//might not need delete statement
 void Participant::setBehavior(MoveBehaviour* b) { 
   delete behaviour;
   behaviour = b; 

@@ -19,10 +19,10 @@ class Participant{
 
   protected:
     char avatar;
-    bool dead;
     int row;
     int col;
     MoveBehaviour* behaviour;
+    bool dead;
 };
 
 #endif

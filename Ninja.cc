@@ -16,11 +16,12 @@ void Ninja::incurDamage(Participant* p){
 
   if (!poisoned && damage == HERO){
     p->setBehavior(new RescuedBehaviour());
+    this->setBehavior(new RescuedBehaviour());
     return;
   }
 
   strength = random(3) + GIANT_DMG;
-  p->setBehavior(new VillainBehaviour());
+  this->setBehavior(new VillainBehaviour());
   avatar = 'S';
   poisoned = true;
 }

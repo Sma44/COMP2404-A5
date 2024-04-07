@@ -6,6 +6,7 @@
 #include "Ninja.h"
 #include "List.h"
 
+// added helper function for status
 class Escape{
   public:
     Escape();

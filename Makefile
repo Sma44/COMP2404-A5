@@ -1,12 +1,15 @@
 OPT = -g -Wall
 
-a5: main.o Escape.o MoveBehaviour.o Participant.o Hero.o Snorc.o Ninja.o random.o 
-	g++ $(OPT) -o a5 main.o Escape.o MoveBehaviour.o Participant.o Hero.o Snorc.o Ninja.o random.o 
+a5: main.o random.o MoveBehaviour.o Participant.o Hero.o Snorc.o Ninja.o Escape.o 
+	g++ $(OPT) -o a5 main.o random.o MoveBehaviour.o Participant.o Hero.o Snorc.o Ninja.o Escape.o
 
-main.o: main.cc defs.h
+main.o: main.cc Escape.h
 	g++ $(OPT) -c main.cc
 
-Participant.o: Participant.cc Participant.h
+Escape.o: Escape.cc Escape.h
+	g++ $(OPT) -c Escape.cc
+
+Participant.o: Participant.cc Participant.h Escape.h
 	g++ $(OPT) -c Participant.cc
 
 Hero.o: Hero.cc Hero.h
@@ -20,9 +23,6 @@ Ninja.o: Ninja.cc Ninja.h
 
 MoveBehaviour.o: MoveBehaviour.cc MoveBehaviour.h
 	g++ $(OPT) -c MoveBehaviour.cc
-
-Escape.o: Escape.cc Escape.h
-	g++ $(OPT) -c Escape.cc
 
 random.o: random.cc 
 	g++ $(OPT) -c random.cc

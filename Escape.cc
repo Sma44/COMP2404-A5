@@ -18,9 +18,8 @@ Escape::Escape(){
 }
 
 void Escape::runEscape(){
-  bool flag = false;
   int spawn;
-  while(!flag){
+  while(!isOver()){
     usleep(200000);
     spawn = random(SNORC_SPAWN + NO_SNORC);
     if(spawn < SNORC_SPAWN){
@@ -33,7 +32,6 @@ void Escape::runEscape(){
     }
 
     moveParticipants();
-    flag = isOver();
 
     system("clear");
     printPit();

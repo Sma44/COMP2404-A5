@@ -2,6 +2,7 @@
 #define MOVEBEHAVIOUR_H
 
 #include "defs.h"
+#include "Escape.h"
 
 class MoveBehaviour{
   public:

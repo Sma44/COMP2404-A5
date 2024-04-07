@@ -1,6 +1,5 @@
 #include "MoveBehaviour.h"
 
-// TODO: might need to do validation with each function
 void EscapeeBehaviour::move(int oldRow, int oldCol, int& newRow, int& newCol){
   int vertical = random(5);
   int horizontal = random(3);
@@ -37,6 +36,12 @@ void EscapeeBehaviour::move(int oldRow, int oldCol, int& newRow, int& newCol){
 
   newRow = oldRow + horizontalOffset;
   newCol = oldCol + verticalOffset;
+
+  if (!Escape::withinBounds(newRow,newCol)){
+    newRow = oldRow;
+    newCol = oldCol;
+  }
+
 }
 
 void VillainBehaviour::move(int oldRow, int oldCol, int& newRow, int& newCol){
@@ -56,12 +61,19 @@ void VillainBehaviour::move(int oldRow, int oldCol, int& newRow, int& newCol){
 
   newRow = ((vertical == UP) ? oldRow - 1 : oldRow + 1);
   newCol = oldCol + horizontalOffset;
+
+  if (!Escape::withinBounds(newRow,newCol)){
+    newRow = oldRow;
+    newCol = oldCol;
+  }
 }
 
 void RescuerBehaviour::move(int oldRow, int oldCol, int& newRow, int& newCol){
   newRow = oldRow +1;
+  newCol = oldCol;
 }
 
 void RescuedBehaviour::move(int oldRow, int oldCol, int& newRow, int& newCol){
   newRow = oldRow -1;
+  newCol = oldCol;
 }

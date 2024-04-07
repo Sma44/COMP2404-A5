@@ -7,7 +7,12 @@ Participant::~Participant() { delete behaviour; }
 
 void Participant::move() { 
   int newRow, newCol;
-  behaviour->move(row, col, newRow, newCol);
+  if (!isDead() && !isSafe()){
+    behaviour->move(row, col, newRow, newCol);
+  }
+  else {
+    return;
+  }
   row = newRow;
   col = newCol;
 }

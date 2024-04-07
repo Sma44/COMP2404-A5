@@ -23,6 +23,7 @@ class Escape{
     Participant* checkForCollision(Participant*);
     bool isOver();
     void printPit();
-    void printOutcome();
+    void printOutcome(Hero*);
+    string getStatus(Hero*);
 };
 #endif

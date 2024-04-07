@@ -38,7 +38,8 @@ void Escape::runEscape(){
     system("clear");
     printPit();
   }
-  printOutcome();
+  printOutcome(h1);
+  printOutcome(h2);
 
 }
 
@@ -96,8 +97,6 @@ void Escape::moveParticipants(){
       tempArr[i]->incurDamage(p);
     }
   }
-
-
 }
 
 void Escape::printPit(){
@@ -139,7 +138,7 @@ void Escape::printPit(){
     for (int j = 0; j < MAX_COL; j++){
       cout << pitTemplate[i][j];
     }
-    cout << endl;
+    cout << "|" << endl;
   }
   cout << "-------------------------" << endl;
 
@@ -147,56 +146,51 @@ void Escape::printPit(){
     cout << pitTemplate[MAX_ROW-2][j];
   }
 
-  string status1, status2;
+  string status1 = " ";
+  string status2 = " ";
 
-  if (h1->isDead()){
-    status1 = "Deceased";
-  }
-  if (h1->isRescued()){
-    status1 = "Rescued";
-  }
-  if (h1->isSafe()){
-    status1 = "Escaped";
-  }
+  status1 = getStatus(h1);
+  status2 = getStatus(h2);
 
-  if (h2->isDead()){
-    status1 = "Deceased";
-  }
-  if (h2->isRescued()){
-    status1 = "Rescued";
-  }
-  if (h2->isSafe()){
-    status1 = "Escaped";
-  }
-
-  cout << setw(5) << " " << setw(6) << left << h1->getName() << ":  "
+  cout << setw(5) << " " << setw(6) << left << h1->getName() << " "
        << h1->getHealth() << setw(10) << status1 << endl;
 
   for (int j = 0; j < MAX_COL; j++){
     cout << pitTemplate[MAX_ROW-1][j];
   }
 
-  cout << setw(5) << " " << setw(6) << left << h2->getName() << ":  "
+  cout << setw(5) << " " << setw(6) << left << h2->getName() << " "
        << h2->getHealth() << setw(10) << status2 << endl;
 
 
 
 }
 
-// TODO: update output format
-void Escape::printOutcome(){
-   if (h1->isDead() && h2->isDead()){
-    cout << "Both Heroes have died." << endl;
+string Escape::getStatus(Hero* h){
+  string status = " ";
+  if (h->isDead()){
+    status = "Deceased";
   }
-  else if(h1->isDead() && h2->isSafe()){
-    cout << "Only " << h2->getName() << " survived." << endl;
+  if (h->isRescued()){
+    status = "Rescued";
   }
-  else if(h1->isSafe() && h2->isDead()){
-    cout << "Only " << h1->getName() << " survived." << endl;
+  if (h->isSafe()){
+    status = "Escaped";
   }
-  else{
-    cout << "Both Heroes survived." << endl;
+  return status;
+}
+
+void Escape::printOutcome(Hero* h){
+  cout << setw(8) << left << h->getName();
+  if (h->isDead()){
+    cout << "Has Died" << endl;
+    return;
   }
-  cout << setw(7) << left << h1->getName() << ": " << h1->getHealth() << endl;
-  cout << setw(7) << left << h2->getName() << ": " << h2->getHealth() << endl;
+  if(h->isRescued()){
+    cout << "Has been Rescued" << endl;
+    return;
+  }
+  if(h->isSafe()){
+    cout << "Has Escaped" << endl;
+  }
 }

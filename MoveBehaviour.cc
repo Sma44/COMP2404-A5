@@ -1,4 +1,5 @@
 #include "MoveBehaviour.h"
+#include "Escape.h"
 
 void EscapeeBehaviour::move(int oldRow, int oldCol, int& newRow, int& newCol){
   int vertical = random(5);
@@ -59,7 +60,12 @@ void VillainBehaviour::move(int oldRow, int oldCol, int& newRow, int& newCol){
       break;
   }
 
-  newRow = ((vertical == UP) ? oldRow - 1 : oldRow + 1);
+  if (oldRow <= MAX_HEIGHT){
+    newRow = oldRow + 1;
+  }else{
+    newRow = ((vertical == UP) ? oldRow - 1 : oldRow + 1);
+  }
+
   newCol = oldCol + horizontalOffset;
 
   if (!Escape::withinBounds(newRow,newCol)){
@@ -71,9 +77,15 @@ void VillainBehaviour::move(int oldRow, int oldCol, int& newRow, int& newCol){
 void RescuerBehaviour::move(int oldRow, int oldCol, int& newRow, int& newCol){
   newRow = oldRow +1;
   newCol = oldCol;
+  if (!Escape::withinBounds(newRow,newCol)){
+    newRow = oldRow;
+  }
 }
 
 void RescuedBehaviour::move(int oldRow, int oldCol, int& newRow, int& newCol){
   newRow = oldRow -1;
   newCol = oldCol;
+  if (!Escape::withinBounds(newRow,newCol)){
+    newRow = oldRow;
+  }
 }

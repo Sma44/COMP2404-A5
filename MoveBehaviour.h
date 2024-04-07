@@ -2,10 +2,10 @@
 #define MOVEBEHAVIOUR_H
 
 #include "defs.h"
-#include "Escape.h"
 
 class MoveBehaviour{
   public:
+    virtual ~MoveBehaviour(){};
     virtual void move(int,int,int&,int&) = 0;
 };
 

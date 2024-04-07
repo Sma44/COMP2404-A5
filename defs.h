@@ -24,7 +24,7 @@ using namespace std;
 #define HERO           0
 #define GIANT_DMG      6
 #define LEFT_BOUND     7
-#define MAX_HEIGHT    14
+#define MAX_HEIGHT    12
 #define MIN_STRENGTH   2
 
 #define NOMOVE         0
@@ -32,7 +32,7 @@ using namespace std;
 #define TWOUP          2
 #define ONEDOWN        3
 #define TWODOWN        4
-#define UP             0
+#define UP             1
 
 // horizontal movement
 #define LEFT           1

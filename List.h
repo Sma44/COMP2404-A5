@@ -45,7 +45,7 @@ T List<T>::operator+=(T data){
   Node* currNode = head;
   Node* prevNode = nullptr;
 
-  while (currNode != null){
+  while (currNode != nullptr){
     prevNode = currNode;
     currNode = currNode->next;
   }
@@ -55,14 +55,16 @@ T List<T>::operator+=(T data){
   } else {
     prevNode->next = newNode;
   }
+
+  return data;
 }
 
 template<class T>
 void List<T>::convertToArray(T* arr, int& size){
-  Node* currNode;
+  Node* currNode = head;
   size = 0;
 
-  while(currNode != null){
+  while(currNode != nullptr){
     arr[size] = currNode->data;
     size++;
     currNode = currNode->next;

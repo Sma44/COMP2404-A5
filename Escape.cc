@@ -47,7 +47,7 @@ bool Escape::isOver(){
 }
 
 bool Escape::withinBounds(int row, int col) {
-
+  return ((row >= 0 && row < MAX_ROW) && (col >= 0 && col < MAX_COL));
 }
 
 void Escape::spawnSnorc(){
@@ -69,10 +69,34 @@ void Escape::spawnNinja(){
 }
 
 Participant* Escape::checkForCollision(Participant* p){
+  Participant* tempArr[MAX_ARR];
+  int size;
+  arr.convertToArray(tempArr,size);
 
+  for (int i = 0; i < size; i++){
+    if (tempArr[i] != p){
+      if (tempArr[i]->getCol() == p->getCol() && tempArr[i]->getRow() == p->getRow()){
+        return tempArr[i];
+      }
+    }
+  }
+  return nullptr;
 }
 
 void Escape::moveParticipants(){
+  Participant* tempArr[MAX_ARR];
+  int size;
+  arr.convertToArray(tempArr,size);
+
+  for (int i = 0; i < size; i++){
+    tempArr[i]->move();
+    Participant* p = checkForCollision(tempArr[i]);
+    if (p != nullptr){
+      p->incurDamage(tempArr[i]);
+      tempArr[i]->incurDamage(p);
+    }
+  }
+
 
 }
 
@@ -99,10 +123,67 @@ void Escape::printPit(){
       "                         ",
       "                         "
   };
+  Participant* tempArr[MAX_ARR];
+  int size;
+  arr.convertToArray(tempArr,size);
+
+  for (int i = 0; i < size; i++){
+    int row = tempArr[i]->getRow();
+    int col = tempArr[i]->getCol();
+    pitTemplate[row][col] = tempArr[i]->getAvatar();
+  }
+
+  cout << "-------------------------" << endl;
+  for (int i = 0; i < MAX_ROW-2; i++){
+    cout << "|";
+    for (int j = 0; j < MAX_COL; j++){
+      cout << pitTemplate[i][j];
+    }
+    cout << endl;
+  }
+  cout << "-------------------------" << endl;
+
+  for (int j = 0; j < MAX_COL; j++){
+    cout << pitTemplate[MAX_ROW-2][j];
+  }
+
+  string status1, status2;
+
+  if (h1->isDead()){
+    status1 = "Deceased";
+  }
+  if (h1->isRescued()){
+    status1 = "Rescued";
+  }
+  if (h1->isSafe()){
+    status1 = "Escaped";
+  }
+
+  if (h2->isDead()){
+    status1 = "Deceased";
+  }
+  if (h2->isRescued()){
+    status1 = "Rescued";
+  }
+  if (h2->isSafe()){
+    status1 = "Escaped";
+  }
+
+  cout << setw(5) << " " << setw(6) << left << h1->getName() << ":  "
+       << h1->getHealth() << setw(10) << status1 << endl;
+
+  for (int j = 0; j < MAX_COL; j++){
+    cout << pitTemplate[MAX_ROW-1][j];
+  }
+
+  cout << setw(5) << " " << setw(6) << left << h2->getName() << ":  "
+       << h2->getHealth() << setw(10) << status2 << endl;
+
 
 
 }
 
+// TODO: update output format
 void Escape::printOutcome(){
    if (h1->isDead() && h2->isDead()){
     cout << "Both Heroes have died." << endl;

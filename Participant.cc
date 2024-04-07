@@ -22,7 +22,6 @@ int Participant::getRow() { return row; }
 int Participant::getCol() { return col; }
 bool Participant::isDead() { return dead; }
 
-//might not need delete statement
 void Participant::setBehavior(MoveBehaviour* b) { 
   delete behaviour;
   behaviour = b; 

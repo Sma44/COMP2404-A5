@@ -27,14 +27,14 @@ void Ninja::incurDamage(Participant* p){
 
 int Ninja::causeDamage() {
   if (!poisoned){
-    return 0;
+    return RESCUE;
   }
   return strength;
 }
 
 bool Ninja::isSafe(){
   if (!poisoned){
-    if (row == 0 || row == MAX_ROW){
+    if (row == 0 || row == MAX_ROW-1){
       return true;
     }
     return false;

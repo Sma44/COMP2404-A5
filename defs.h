@@ -24,10 +24,9 @@ using namespace std;
 #define HERO           0
 #define GIANT_DMG      6
 #define LEFT_BOUND     7
-#define MAX_HEIGHT    14 // spawn no higher than this
+#define MAX_HEIGHT    14
 #define MIN_STRENGTH   2
 
-// vertical movement
 #define NOMOVE         0
 #define ONEUP          1
 #define TWOUP          2

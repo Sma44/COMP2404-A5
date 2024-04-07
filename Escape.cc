@@ -65,7 +65,7 @@ void Escape::spawnSnorc(){
 
 void Escape::spawnNinja(){
   int col = random(MAX_COL);
-  int row = 0;
+  int row = 1;
   arr+=(new Ninja(row,col));
 }
 
@@ -132,19 +132,20 @@ void Escape::printPit(){
     pitTemplate[row][col] = tempArr[i]->getAvatar();
   }
 
-  cout << "-------------------------" << endl;
-  for (int i = 0; i < MAX_ROW-2; i++){
+  cout << "---------------------------" << endl;
+  for (int i = 0; i < MAX_ROW-1; i++){
     cout << "|";
     for (int j = 0; j < MAX_COL; j++){
       cout << pitTemplate[i][j];
     }
     cout << "|" << endl;
   }
-  cout << "-------------------------" << endl;
 
+  cout << "|";
   for (int j = 0; j < MAX_COL; j++){
-    cout << pitTemplate[MAX_ROW-2][j];
+    cout << pitTemplate[MAX_ROW-1][j];
   }
+  cout << "|";
 
   string status1 = " ";
   string status2 = " ";
@@ -153,16 +154,12 @@ void Escape::printPit(){
   status2 = getStatus(h2);
 
   cout << setw(5) << " " << setw(6) << left << h1->getName() << " "
-       << h1->getHealth() << setw(10) << status1 << endl;
+       << setw(5) << left << h1->getHealth() << setw(10) << right << status1 << endl;
 
-  for (int j = 0; j < MAX_COL; j++){
-    cout << pitTemplate[MAX_ROW-1][j];
-  }
+  cout << "---------------------------";
 
   cout << setw(5) << " " << setw(6) << left << h2->getName() << " "
-       << h2->getHealth() << setw(10) << status2 << endl;
-
-
+       << setw(5) << left << h2->getHealth() << setw(10) << right << status2 << endl;
 
 }
 
@@ -170,10 +167,10 @@ string Escape::getStatus(Hero* h){
   string status = " ";
   if (h->isDead()){
     status = "Deceased";
-  }
+  }else 
   if (h->isRescued()){
     status = "Rescued";
-  }
+  }else
   if (h->isSafe()){
     status = "Escaped";
   }

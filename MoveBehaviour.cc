@@ -60,10 +60,12 @@ void VillainBehaviour::move(int oldRow, int oldCol, int& newRow, int& newCol){
       break;
   }
 
-  if (oldRow <= MAX_HEIGHT){
-    newRow = oldRow + 1;
-  }else{
-    newRow = ((vertical == UP) ? oldRow - 1 : oldRow + 1);
+  newRow = ((vertical == UP) ? oldRow - 1 : oldRow + 1);
+
+  if (newRow < MAX_HEIGHT){
+    newRow = oldRow;
+    newCol = oldCol;
+    return;
   }
 
   newCol = oldCol + horizontalOffset;

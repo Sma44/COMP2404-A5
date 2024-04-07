@@ -14,12 +14,12 @@ void Ninja::incurDamage(Participant* p){
     return;
   }
 
-  if (damage == HERO){
+  if (!poisoned && damage == HERO){
     p->setBehavior(new RescuedBehaviour());
     return;
   }
 
-  damage = random(3) + GIANT_DMG;
+  strength = random(3) + GIANT_DMG;
   p->setBehavior(new VillainBehaviour());
   avatar = 'S';
   poisoned = true;
@@ -37,6 +37,6 @@ bool Ninja::isSafe(){
     if (row == 0 || row == MAX_ROW-1){
       return true;
     }
-    return false;
   }
+  return false;
 }
